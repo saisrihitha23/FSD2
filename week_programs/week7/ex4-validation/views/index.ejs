@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Basic Validation</title>
+</head>
+<body>
+
+    <h1>Registration Form</h1>
+
+    <% if (error) { %>
+        <p style="color:red;"><%= error %></p>
+    <% } %>
+
+    <form action="/submit" method="POST">
+
+        <label>Username:</label>
+        <input type="text" name="username" value="<%= username %>">
+
+        <br><br>
+
+        <label>Age:</label>
+        <input type="number" name="age" value="<%= age %>">
+
+        <br><br>
+
+        <button type="submit">Register</button>
+
+    </form>
+
+</body>
+</html>
