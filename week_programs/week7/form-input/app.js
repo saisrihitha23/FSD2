@@ -14,16 +14,16 @@ app.get("/", (req, res) => {
 });
 
 app.post("/submit", (req, res) => {
-    const name = req.body.name;
-    const course = req.body.course;
+    const astronaut = req.body.astronaut;
+    const mission = req.body.mission;
 
     res.send(`
-        <h1>Form Submitted Successfully</h1>
-        <p>Name: ${name}</p>
-        <p>Course: ${course}</p>
+        <h1>Mission Registration Successful</h1>
+        <p>Astronaut: ${astronaut}</p>
+        <p>Mission: ${mission}</p>
     `);
 });
 
 app.listen(3002, () => {
-    console.log("Experiment 3 running at http://localhost:3002");
+    console.log("Space Form running at http://localhost:3002");
 });

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Astronaut Registration</title>
+</head>
+<body>
+
+    <h1>Astronaut Registration</h1>
+
+    <% if (error) { %>
+        <p style="color:red;"><%= error %></p>
+    <% } %>
+
+    <form action="/submit" method="POST">
+
+        <label>Astronaut Name:</label>
+        <input type="text" name="astronaut" value="<%= astronaut %>">
+
+        <br><br>
+
+        <label>Mission Years:</label>
+        <input type="number" name="years" value="<%= years %>">
+
+        <br><br>
+
+        <button type="submit">Register</button>
+
+    </form>
+
+</body>
+</html>

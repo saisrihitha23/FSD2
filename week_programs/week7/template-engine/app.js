@@ -4,19 +4,14 @@ const path = require("path");
 const app = express();
 
 app.set("view engine", "ejs");
+
+// Tell Express where the views folder is
 app.set("views", path.join(__dirname, "views"));
 
 app.get("/", (req, res) => {
-
-    const student = {
-        name: "Sai Srihitha",
-        course: "AI & DS",
-        age: 20
-    };
-
-    res.render("index", { student: student });
+    res.render("index");
 });
 
 app.listen(3000, () => {
-    console.log("Server running at http://localhost:3000");
+    console.log("Space Mission Server running at http://localhost:3000");
 });
