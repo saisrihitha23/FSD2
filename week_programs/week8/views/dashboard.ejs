@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Space Dashboard</title>
+</head>
+
+<body>
+
+    <h1>Welcome to Space Dashboard, <%= user %>!</h1>
+
+    <p>
+        <strong>Session Info:</strong>
+        You are logged in using Express Session.
+    </p>
+
+
+    <p>
+        <strong>Last Login:</strong>
+        <%= lastLogin %>
+    </p>
+
+
+    <p>
+        <strong>Cookie Data:</strong>
+        Custom lastLogin cookie is being read.
+    </p>
+
+
+    <hr>
+
+
+    <h3>Space Services</h3>
+
+    <ul>
+        <li>Explore Planets</li>
+        <li>View Space Missions</li>
+        <li>Track Spacecraft</li>
+        <li>View Discoveries</li>
+    </ul>
+
+
+    <br>
+
+
+    <a href="/logout">Logout</a>
+
+</body>
+
+</html>
