@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Campus Lost & Found</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            margin: 0;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        input, select, button {
+            padding: 10px;
+            font-size: 15px;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        .item {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .delete {
+            background: #e74c3c;
+            color: white;
+            border: none;
+        }
+
+        .claim {
+            background: #27ae60;
+            color: white;
+            border: none;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Campus Lost & Found</h1>
+
+
+    <!-- CREATE FORM -->
+
+    <form id="itemForm">
+
+        <input
+            type="text"
+            id="itemName"
+            placeholder="Item Name"
+            required
+        >
+
+        <input
+            type="text"
+            id="category"
+            placeholder="Category"
+            required
+        >
+
+        <input
+            type="text"
+            id="location"
+            placeholder="Found Location"
+            required
+        >
+
+        <input
+            type="text"
+            id="foundBy"
+            placeholder="Found By"
+            required
+        >
+
+        <input
+            type="text"
+            id="contact"
+            placeholder="Contact Number"
+            required
+        >
+
+        <button type="submit">
+            Add Found Item
+        </button>
+
+    </form>
+
+
+    <h2>Available Items</h2>
+
+    <div id="itemList">
+
+        <% items.forEach(item => { %>
+
+            <div class="item">
+
+                <h3>
+                    <%= item.itemName %>
+                </h3>
+
+                <p>
+                    Category: <%= item.category %>
+                </p>
+
+                <p>
+                    Location: <%= item.location %>
+                </p>
+
+                <p>
+                    Found By: <%= item.foundBy %>
+                </p>
+
+                <p>
+                    Contact: <%= item.contact %>
+                </p>
+
+                <p>
+                    Status: <%= item.status %>
+                </p>
+
+                <button
+                    class="claim"
+                    onclick="claimItem('<%= item._id %>')">
+                    Mark as Claimed
+                </button>
+
+                <button
+                    class="delete"
+                    onclick="deleteItem('<%= item._id %>')">
+                    Delete
+                </button>
+
+            </div>
+
+        <% }) %>
+
+    </div>
+
+</div>
+
+
+<script>
+
+
+// CREATE using REST API
+
+document
+    .getElementById("itemForm")
+    .addEventListener("submit", async function(e) {
+
+        e.preventDefault();
+
+        const itemData = {
+
+            itemName:
+                document.getElementById("itemName").value,
+
+            category:
+                document.getElementById("category").value,
+
+            location:
+                document.getElementById("location").value,
+
+            foundBy:
+                document.getElementById("foundBy").value,
+
+            contact:
+                document.getElementById("contact").value
+
+        };
+
+
+        const response = await fetch("/items", {
+
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify(itemData)
+
+        });
+
+
+        if (response.ok) {
+
+            alert("Item added successfully!");
+
+            window.location.reload();
+
+        }
+
+    });
+
+
+
+// UPDATE
+
+async function claimItem(id) {
+
+    const response = await fetch(
+        "/items/" + id,
+        {
+            method: "PUT",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+                status: "Claimed"
+            })
+        }
+    );
+
+
+    if (response.ok) {
+
+        alert("Item marked as claimed!");
+
+        window.location.reload();
+
+    }
+
+}
+
+
+
+// DELETE
+
+async function deleteItem(id) {
+
+    if (!confirm("Remove this item?")) {
+        return;
+    }
+
+
+    const response = await fetch(
+        "/items/" + id,
+        {
+            method: "DELETE"
+        }
+    );
+
+
+    if (response.ok) {
+
+        alert("Item deleted successfully!");
+
+        window.location.reload();
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
