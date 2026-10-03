@@ -1,0 +1,18 @@
+.student {
+  border: 2px solid #61dafb;
+  padding: 15px;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+.student h2 {
+  color: #ffffff;
+}
+
+.student button {
+  margin-right: 10px;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

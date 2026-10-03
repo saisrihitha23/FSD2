@@ -1,0 +1,33 @@
+.hooks-demo {
+  min-height: 100vh;
+  padding: 50px;
+  background: #020617;
+  color: white;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.hooks-demo h2 {
+  color: #38bdf8;
+  font-size: 32px;
+}
+
+.hooks-demo h3 {
+  color: #cbd5e1;
+  font-size: 24px;
+  margin: 30px;
+}
+
+.hooks-demo button {
+  margin: 8px;
+  padding: 10px 20px;
+  border: 1px solid #38bdf8;
+  border-radius: 8px;
+  background: #1e293b;
+  color: white;
+  cursor: pointer;
+}
+
+.hooks-demo button:hover {
+  background: #2563eb;
+}

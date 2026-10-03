@@ -1,0 +1,17 @@
+.app {
+  min-height: 100vh;
+  padding: 30px;
+  background: linear-gradient(to bottom, #050522, #11113d);
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.app button {
+  background-color: #24245c;
+  color: white;
+  border: 1px solid #61dafb;
+}
+
+.app button:hover {
+  background-color: #3b3b80;
+}
